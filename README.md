@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Examination Timetable Generator
 
 A small Flask web app that generates examination timetables from available dates, branch subjects, subject restrictions, and difficulty ratings.
@@ -68,3 +69,7 @@ Subjects repeated across branches are treated as common subjects and scheduled o
 - `app.py` — Flask routes and form processing.
 - `scheduler_engine.py` — timetable constraint and scheduling logic.
 - `templates/` — input, timetable, and error pages.
+=======
+# Exam-Timetable-Generator
+An AI-based web application that automatically generates examination timetables for multiple branches using Constraint Satisfaction, Backtracking, and Hill Climbing. It handles hard constraints such as subject conflicts, common-subject synchronization, available dates, and restricted dates, while improving the timetable using soft constraints.
+>>>>>>> ea114c00decd2704695c2355245841ca543a3978
