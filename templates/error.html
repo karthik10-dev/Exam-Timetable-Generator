@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timetable Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .box {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #dc3545;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Timetable Generation Failed</h1>
+
+        <div class="error">
+            <h3>Could not create a valid timetable.</h3>
+            <p>{{ error_message if error_message else 'Please check the dates, subjects, and restrictions.' }}</p>
+        </div>
+
+        <p><strong>Try these:</strong></p>
+        <ul>
+            <li>Add more examination dates.</li>
+            <li>Make sure each branch has enough dates for its subjects.</li>
+            <li>Check the restricted dates.</li>
+        </ul>
+
+        <a href="/" class="btn">Back to Input Form</a>
+    </div>
+</body>
+</html>

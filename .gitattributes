@@ -1,0 +1,6 @@
+# Normalize text files to LF in the repository.
+* text=auto
+
+# Keep Python and HTML source files consistent across platforms.
+*.py text eol=lf
+*.html text eol=lf

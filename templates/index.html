@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exam Timetable Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .box {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #0056b3;
+        }
+
+        .group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.4rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        small {
+            color: #6c757d;
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .demo {
+            background: #6c757d;
+            margin-left: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .card {
+            background: #e9ecef;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Examination Timetable Generator</h1>
+
+        <div class="card">
+            <strong>Quick Start:</strong>
+            Click "Load Demo Setup" to use sample data.
+            <a href="/demo" class="btn demo">Load Demo Setup</a>
+        </div>
+
+        <form action="/generate" method="POST">
+            <div class="group">
+                <label for="available_dates">Available Examination Dates:</label>
+                <input
+                    type="text"
+                    id="available_dates"
+                    name="available_dates"
+                    required
+                    placeholder="e.g. 2026-10-01, 2026-10-03, 2026-10-05"
+                    value="{{ preset_dates if preset_dates else '' }}"
+                >
+                <small>Enter multiple dates separated by commas.</small>
+            </div>
+
+            <div class="group">
+                <label for="time_slot">Exam Time Slot:</label>
+                <input
+                    type="text"
+                    id="time_slot"
+                    name="time_slot"
+                    required
+                    placeholder="e.g. 09:30 AM - 12:30 PM"
+                    value="{{ preset_slot if preset_slot else '09:30 AM - 12:30 PM' }}"
+                >
+                <small>Enter the daily exam time.</small>
+            </div>
+
+            <div class="group">
+                <label for="branch_data">Branches and Subjects:</label>
+                <textarea
+                    id="branch_data"
+                    name="branch_data"
+                    rows="6"
+                    required
+                    placeholder="Computer Science: Mathematics I, Data Structures, Operating Systems&#10;Electrical Eng: Mathematics I, Circuit Analysis, Digital Electronics&#10;Mechanical Eng: Mathematics I, Thermodynamics, Fluid Mechanics"
+                >{{ preset_branches if preset_branches else '' }}</textarea>
+                <small>
+                    Format: Branch Name: Subject 1, Subject 2, Subject 3.
+                    Use one branch per line.
+                </small>
+            </div>
+
+            <div class="group">
+                <label for="restricted_dates">Restricted Dates (Optional):</label>
+                <input
+                    type="text"
+                    id="restricted_dates"
+                    name="restricted_dates"
+                    placeholder="e.g. Thermodynamics: 2026-10-01"
+                    value="{{ preset_restricted if preset_restricted else '' }}"
+                >
+                <small>Format: Subject: Date.</small>
+            </div>
+
+            <div class="group">
+                <label for="difficulty_ratings">Subject Difficulty (Optional):</label>
+                <input
+                    type="text"
+                    id="difficulty_ratings"
+                    name="difficulty_ratings"
+                    placeholder="e.g. Mathematics I: 3, Operating Systems: 2"
+                    value="{{ preset_diff if preset_diff else '' }}"
+                >
+                <small>Use 1 for Easy, 2 for Medium and 3 for Difficult.</small>
+            </div>
+
+            <button type="submit" class="btn">Generate Timetable</button>
+        </form>
+    </div>
+</body>
+</html>
